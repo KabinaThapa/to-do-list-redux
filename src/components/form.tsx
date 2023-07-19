@@ -49,6 +49,7 @@ const form = () => {
 
             }))
             setEditedId(null)
+            setInput('')
         }else{
             addTask()
             setInput('')
@@ -65,8 +66,8 @@ const form = () => {
    </form>
    <div className='flex flex-col justify-center items-center'>
     {  todo.map((item:ITodo)=>(
-      <div key={item.id} className='flex justify-around w-96'>
-        <ul className='flex list-none '>
+      <div key={item.id} className='flex justify-around w-96 '>
+        <ul className={`${item.completed?'line-through':''}`}>
        
         <li>{item.title}</li>
         <li>{item.completed}</li>
