@@ -18,7 +18,9 @@ export const todoSlice=createSlice({
             state.push(newTodo)
 
             } 
-        }
+        
 
     }
 })
+export const {addTodo}=todoSlice.actions//get actions or action creaters
+export default todoSlice.reducer//add it to store
