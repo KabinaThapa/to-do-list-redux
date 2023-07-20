@@ -34,20 +34,23 @@ const signin = () => {
     }
 
   return (
-    <div className='flex justify-center items-center text-black '>
+    <div className='bgimg h-screen flex justify-center items-center'>
         <Formik 
         initialValues={initialvalues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema} >
             {()=>{
                 return(
-                    <div className='flex flex-col justify-center p-4  h-96 border-2 w-[50%] mt-12 backdrop-blur-sm'>
+                    <div className='flex flex-col justify-center items-center w-full h-screen backdrop-blur-sm text-blue-900'>
                        <h1 className='text-3xl mb-4'>LOGIN</h1>
-                        <Form>
-                           <Inputfield type='text' name='email' label='Email Address'/>
+                        <Form className='w-[30%]'>
+                           <Inputfield type='text' name='email' label='Email Address' />
                            <Inputfield type='password' name='password' label='Password'/>
-                           <Inputfield type='checkbox' name='checkbox' label='I accept all terms and conditions.'/>
-                           <button type='submit' className='border-2 w-full'> Login</button>
+                          
+                        
+                          
+                           <button type='submit' className='border-2 w-full mt-4'> Login</button>
+                           
 
                         </Form>
                         <ToastContainer className='ml-auto'/>
