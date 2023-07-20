@@ -1,12 +1,14 @@
 {
-    "users": [
-      {
-        "email": "gorakh@gmail.com",
-        "password": "1234567890"
-      },
-      {
-        "email": "test@gmail.com",
-        "password": "123"
-      }
-    ]
-  }
+  "users": [
+    {
+      "email": "thapakabina28@gmail.com",
+      "password": "$2a$10$.QIgublqcRz068IsZryMOORLWQQr9P4ujdnsLWF.qcywYtXKOYAQS",
+      "id": 1
+    },
+    {
+      "email": "jharanatmg22@gmail.com",
+      "password": "$2a$10$zFKckTnT5ds2kUdbdycMoeTsMw7vq.U.umaThIixhMrSX4m7mNxku",
+      "id": 2
+    }
+  ]
+}
