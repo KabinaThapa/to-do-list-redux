@@ -6,7 +6,7 @@ import { RootState } from "../redux/store";
 
 import { useDispatch } from "react-redux";
 
-import { ITodo, addTodo, updateTodo } from "../redux/todoSlice";
+import { ITodo, addTodo, updateTodo, deleteTodo } from "../redux/todoSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -48,11 +48,15 @@ const Form = () => {
       setInput("");
     }
   };
-
+  //edit new task
   const handleEdit = (todo: ITodo) => {
     setInput(todo.title);
 
     setEditedId(todo.id);
+  };
+  //delete new task
+  const handleDelete = (id: number) => {
+    dispatch(deleteTodo(id));
   };
 
   return (
@@ -77,6 +81,7 @@ const Form = () => {
               <li>{item.completed}</li>
             </ul>
             <button onClick={() => handleEdit(item)}>Edit</button>
+            <button onClick={() => handleDelete(item.id)}>Delete</button>
           </div>
         ))}
       </div>
@@ -84,4 +89,4 @@ const Form = () => {
   );
 };
 
-export default form;
+export default Form;
