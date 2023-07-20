@@ -1,0 +1,5 @@
+.bgimg{
+    background-image: url('./assets/todo.jpg');
+    background-size:cover;
+    transition: transform 0.3s ease;
+}
