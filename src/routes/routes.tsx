@@ -2,7 +2,9 @@ import { createBrowserRouter } from 'react-router-dom'
 import Home from '../pages/home'
 import SignIn from '../pages/signin'
 import SignUp from '../pages/signup'
-import Main from '../pages/main'
+
+import Dashboard from './../pages/dashboard';
+import Protected from '../protected-routes/protected';
 
 
 export const router = createBrowserRouter([
@@ -19,7 +21,8 @@ export const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: '/main',
-    element: <Main />,
+    path: '/dashboard',
+    element: 
+    (<Protected><Dashboard /></Protected>),
   },
 ])

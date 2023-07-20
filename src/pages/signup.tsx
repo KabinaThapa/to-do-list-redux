@@ -1,9 +1,12 @@
 import React from 'react'
 import Inputfield from '../components/inputfield'
-
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Formik,Form } from 'formik';
 import * as Yup from 'yup'
+import { ToastContainer, toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
+
 
 const signup = () => {
     const initialvalues={
@@ -25,7 +28,14 @@ const signup = () => {
     })
     const navigate=useNavigate()
     const handleSubmit=(values:typeof initialvalues)=>{
-        navigate('/Loginpage')
+        axios.post(' http://localhost:3000/users', {email:values.email, password:values.password})
+        .then((response)=>{toast.success('Scuccessfully created your account.')
+        navigate('/sign-in')
+        localStorage.setItem('token', response.data.accessToken)
+    })
+
+        .catch(()=>{toast.error('Could not sign in')})
+       
 
     }
 
