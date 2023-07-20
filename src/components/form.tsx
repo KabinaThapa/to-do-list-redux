@@ -1,13 +1,20 @@
 import React, { ChangeEvent,FormEvent,useState } from 'react'
 import { motion } from 'framer-motion'
 
-import {useSelector} from 'react-redux'
-import { RootState } from '../redux/store'
-import {useDispatch} from 'react-redux'
-import {toggleComplete, deleteTodo, ITodo,addTodo,updateTodo } from '../redux/todoSlice' 
+import { useDispatch } from "react-redux";
 
+import {
+  ITodo,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+  toggleComplete,
+} from "../redux/todoSlice";
 
+const Form = () => {
+  const dispatch = useDispatch();
 
+  const todo = useSelector((state: RootState) => state.todo.todos);
 
 const form = () => {
     const dispatch=useDispatch()
