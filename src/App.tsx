@@ -1,10 +1,15 @@
-import Form from "./components/form";
-
+import Form from'./components/form';
+import './App.css'
 function App() {
-  return;
+  return(
   <>
-    <Form />
-  </>;
+  <div>
+  <Form/>
+  </div>
+    
+  </>
+  )
+  
 }
 
 export default App;
