@@ -6,7 +6,13 @@ import { RootState } from "../redux/store";
 
 import { useDispatch } from "react-redux";
 
-import { ITodo, addTodo, updateTodo, deleteTodo } from "../redux/todoSlice";
+import {
+  ITodo,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+  toggleComplete,
+} from "../redux/todoSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -48,15 +54,19 @@ const Form = () => {
       setInput("");
     }
   };
-  //edit new task
+  //edit task
   const handleEdit = (todo: ITodo) => {
     setInput(todo.title);
 
     setEditedId(todo.id);
   };
-  //delete new task
+  //delete task
   const handleDelete = (id: number) => {
     dispatch(deleteTodo(id));
+  };
+  //toggle
+  const handleToogle = (id: number) => {
+    dispatch(toggleComplete(id));
   };
 
   return (
@@ -80,6 +90,11 @@ const Form = () => {
 
               <li>{item.completed}</li>
             </ul>
+            <input
+              type="checkbox"
+              onChange={() => handleToogle(item.id)}
+              checked={item.completed}
+            ></input>
             <button onClick={() => handleEdit(item)}>Edit</button>
             <button onClick={() => handleDelete(item.id)}>Delete</button>
           </div>
