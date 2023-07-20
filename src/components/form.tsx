@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 import { ITodo, addTodo, updateTodo } from "../redux/todoSlice";
 
-const form = () => {
+const Form = () => {
   const dispatch = useDispatch();
 
   const todo = useSelector((state: RootState) => state.todo.todos);
@@ -48,6 +48,13 @@ const form = () => {
       setInput("");
     }
   };
+
+  const handleEdit = (todo: ITodo) => {
+    setInput(todo.title);
+
+    setEditedId(todo.id);
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="w-96 border-2 mx-auto ">
@@ -69,6 +76,7 @@ const form = () => {
 
               <li>{item.completed}</li>
             </ul>
+            <button onClick={() => handleEdit(item)}>Edit</button>
           </div>
         ))}
       </div>
