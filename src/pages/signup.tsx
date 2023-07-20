@@ -6,6 +6,9 @@ import { Formik,Form } from 'formik';
 import * as Yup from 'yup'
 import { ToastContainer, toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
+import { FiUser } from 'react-icons/fi';
+import { BsLock } from 'react-icons/bs';
+import {AiOutlineMail } from 'react-icons/ai';
 
 
 const signup = () => {
@@ -15,7 +18,7 @@ const signup = () => {
         email:'',
         password:'',
         confirmpassword:'',
-        checkbox:false,
+       
 
     }
     const validationSchema=Yup.object({
@@ -31,7 +34,7 @@ const signup = () => {
         axios.post(' http://localhost:3000/users', {email:values.email, password:values.password})
         .then((response)=>{toast.success('Scuccessfully created your account.')
         navigate('/sign-in')
-        localStorage.setItem('token', response.data.accessToken)
+        localStorage.setItem('session-token', response.data.accessToken)
     })
 
         .catch(()=>{toast.error('Could not sign in')})
@@ -40,24 +43,25 @@ const signup = () => {
     }
 
   return (
-    <div className='flex flex-col backdrop-blur-sm justify-center items-center p-4 h-auto w-[50%] mx-auto mt-12  border-2'>
-        <h1 className='text-3xl mb-4 mt-4'>REGISTER</h1>
+    <div className='bgimg h-screen flex justify-center items-center'>
+        
         <Formik 
         initialValues={initialvalues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}>
-
-            <Form className=' flex flex-col p-4 '>
-                <Inputfield type='text' name='name' label='Name'/>
-                <Inputfield type='text' name='username' label='Username'/>
-                <Inputfield type='text' name='email' label='Email'/>
-                <Inputfield type='password' name='password' label='Password'/>
-                <Inputfield type='password' name='confirmpassword' label='Confirm Password'/>
-                <Inputfield type='checkbox' name='checkbox' label='Creating an account means you’re okay with our Terms of Service, Privacy Policy, and our default Notification Settings. '/>
-                <button type='submit' className='border-2'>Register</button>
+            <div className='flex flex-col justify-center items-center w-full h-screen backdrop-blur-sm text-blue-900 font-medium'>
+            <Form className='w-[30%] h-screen bg-white p-8 flex flex-col justify-center'>
+            <h1 className='text-3xl mb-4 mt-4'>REGISTER</h1>
+                <Inputfield type='text' name='name' label='Name'icon={<FiUser/>}/>
+                <Inputfield type='text' name='username' label='Username'icon={<FiUser/>}/>
+                <Inputfield type='text' name='email' label='Email'icon={<AiOutlineMail/>}/>
+                <Inputfield type='password' name='password' label='Password'icon={<BsLock/>}/>
+                <Inputfield type='password' name='confirmpassword' label='Confirm Password' icon={<BsLock/>}/>
+             
+                <button type='submit' className='border-2 w-full mb-6 border-black p-1 rounded-md text-lg'>Register</button>
 
             </Form>
-
+</div>
         </Formik>
     </div>
   )

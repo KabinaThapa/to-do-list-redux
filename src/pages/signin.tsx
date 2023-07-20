@@ -5,13 +5,18 @@ import Inputfield from '../components/inputfield'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { FiUser } from 'react-icons/fi';
+import { BsLock } from 'react-icons/bs';
+import {PiGoogleLogo  } from 'react-icons/pi';
+import { CiFacebook,CiTwitter } from 'react-icons/ci';
+
 
 const signin = () => {
     const initialvalues={
         email:'',
         password:'',
-        checkbox:false,
+       
     }
     const validationSchema=Yup.object({
         email:Yup.string().required('Please enter valid email address.'),
@@ -22,8 +27,9 @@ const signin = () => {
     const handleSubmit=(values:typeof initialvalues)=>{
         axios.post(' http://localhost:3000/login', {email:values.email, password:values.password})
         .then((response)=>{toast.success('Scuccessfully signed in')
-        navigate('/dashboard')
-        localStorage.setItem('session-token', response.data.accessToken)
+        console.log(response.data)
+       navigate('/dashboard')
+        localStorage.setItem('session-token',response.data.accessToken)
     })
 
         .catch(()=>{toast.error('Could not sign in')
@@ -41,16 +47,25 @@ const signin = () => {
         validationSchema={validationSchema} >
             {()=>{
                 return(
-                    <div className='flex flex-col justify-center items-center w-full h-screen backdrop-blur-sm text-blue-900'>
-                       <h1 className='text-3xl mb-4'>LOGIN</h1>
-                        <Form className='w-[30%]'>
-                           <Inputfield type='text' name='email' label='Email Address' />
-                           <Inputfield type='password' name='password' label='Password'/>
-                          
+                    <div className='flex flex-col justify-center items-center w-full h-screen backdrop-blur-sm text-blue-900 font-medium'>
+                       
+                        <Form className='w-[30%] h-screen bg-white p-8 flex flex-col justify-center'>
+                        <h1 className='text-3xl mb-4'>LOGIN</h1>
+                           <Inputfield type='text' name='email' label='Email Address' icon={<FiUser/>} />
+                           <Inputfield type='password' name='password' label='Password' icon={<BsLock/>} />
+                           <p className='text-right mb-8'>Forgot Password?</p>
                         
                           
-                           <button type='submit' className='border-2 w-full mt-4'> Login</button>
-                           
+                           <button type='submit' className='border-2 w-full mb-6 border-black p-1 rounded-md text-lg'> LogIn</button>
+                          <Link to='/sign-up' className='text-center underline mb-4'>Don't have an Account? Sign Up</Link>
+                           <p className='text-center mb-4'>OR</p>
+                           <p className='text-center'>Sign Up Using</p>
+                           <div className='flex items-center justify-between w-24 mx-auto mt-4'>
+                            <CiFacebook size={36}/>
+                            <PiGoogleLogo size={35}/>
+                            <CiTwitter size={40}/>
+
+                           </div>
 
                         </Form>
                         <ToastContainer className='ml-auto'/>
