@@ -9,6 +9,16 @@
       "email": "thapakabina27@gmail.com",
       "password": "$2a$10$5ctZuTAOccDM8HYFiqUfSOJDotZd7sjuZqDK7cD6DYspNIZdGVVFm",
       "id": 2
+    },
+    {
+      "email": "jharanatmg23@gmail.com",
+      "password": "$2a$10$w7wpT4rcHYQShf5rUhBrNObxkvkq/1efhyOZSZ79m/1rxXyhr2oXK",
+      "id": 3
+    },
+    {
+      "email": "thapakabina30@gmail.com",
+      "password": "$2a$10$Wy9UCWXO16Rd/TqRDlAaaO3Rq0GcAUjzf8reYX2JBMcoyKr0ZS9MO",
+      "id": 4
     }
   ]
 }

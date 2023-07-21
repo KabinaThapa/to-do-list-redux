@@ -1,10 +1,11 @@
-import React, { ChangeEvent,FormEvent,useState } from 'react'
+import React, { ChangeEvent,FormEvent,useState,} from 'react'
 import { motion } from 'framer-motion'
 
 import {useSelector} from 'react-redux'
 import { RootState } from '../redux/store'
 import {useDispatch} from 'react-redux'
 import {toggleComplete, deleteTodo, ITodo,addTodo,updateTodo } from '../redux/todoSlice' 
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -57,13 +58,22 @@ const form = () => {
         
        
     }
+    const navigate=useNavigate()
+    const handleLogout=()=>{
+        localStorage.removeItem('session-token')
+        navigate('/')
+
+    }
+
   return (
    <>
    <div className='flex flex-col justify-center items-center h-screen border-l-2 border-r-2 bg-white bg-opacity-60 backdrop-blur-lg w-[50%]'>
   <motion.div className='flex flex-col justify-center items-center' initial={{y:-500}}
       animate={{y:0}}
       transition={{duration:1, delay:0.3}}>
-        
+        <div className='relative top-[-120%] right-[-90%] '>
+    <button onClick={handleLogout} className=' absolute top-3 right-3 border-2 p-1 rounded-md hover:scale-110 w-24 border-slate-500 backdrop-blur-md '>LogOut</button>    
+  </div>
    <h1 className='mb-1 text-3xl font-medium'>TodoWorx</h1>
    <p className='text-xl'>Simplify Your Productivity</p>
 
