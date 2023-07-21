@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "thapakabina29@gmail.com",
+      "password": "$2a$10$IsNJjrKgYxSFYLS2exq5GumxF5gbwAKOusU9LkwCkdzbRCaRYMg2e",
+      "id": 1
+    },
+    {
+      "email": "thapakabina27@gmail.com",
+      "password": "$2a$10$5ctZuTAOccDM8HYFiqUfSOJDotZd7sjuZqDK7cD6DYspNIZdGVVFm",
+      "id": 2
+    }
+  ]
+}

@@ -24,6 +24,9 @@ export const todoSlice=createSlice({
         addTodo:(state, action:PayloadAction<string>)=>{
             //logic to add
            const newTodo:ITodo={
+            //uuid(package)
+            //redux-saga
+            //middleware(thunk,saga)-either
             id:Date.now(),
             title:action.payload,
             completed:false,
